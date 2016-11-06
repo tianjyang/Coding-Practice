@@ -20,6 +20,24 @@ let isUnique = (string) =>{
   });
   return output;
 };
+//
+// console.log(isUnique("abcdef"));
+// console.log(isUnique("bbbbb"));
 
-console.log(isUnique("abcdef"));
-console.log(isUnique("bbbbb"));
+let isUniqueDataStruct = (string) => {
+  let firstChar, secondChar;
+  for (let i = 0; i < string.length; i++) {
+    firstChar = string[i];
+    for (let j = i + 1; j < string.length; j++) {
+      secondChar = string[j];
+      if (firstChar === secondChar) {
+        return false;
+      }
+    }
+  }
+  return true
+};
+
+
+console.log(isUniqueDataStruct("abcdef"));
+console.log(isUniqueDataStruct("gggggg"));
