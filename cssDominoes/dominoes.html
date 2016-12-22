@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="domino.css">
+  </head>
+  <body>
+
+    <button type="button" id="make-domino">Generate Domino</button>
+    <br />
+    <button type="button" id="flip-left">Left</button>
+    <div class="domino-container" id="domino-container" style="display:block;width:210px;height:420px;margin:0px auto;">
+
+    </div>
+    <button type="button" id="flip-right">right</button>
+
+  </body>
+
+  <script>
+  let rotation = 0
+  const flipRight = () => {
+    rotation += 90
+    document.getElementById("domino-container").style.transform = "rotate(" + rotation +"deg)";
+  }
+
+  const flipLeft = () => {
+    rotation -= 90
+    document.getElementById("domino-container").style.transform = "rotate(" + rotation +"deg)";
+  }
+
+
+  const randomDominoGenerator = ()=>{
+    let randomDominoNum = Math.floor(Math.random()*6) + 1;
+    let randomDomino = document.createElement("div");
+    randomDomino.setAttribute("class","half-dom")
+    let dot1 = document.createElement("div")
+    let dot2 = document.createElement("div")
+    let dot3 = document.createElement("div")
+    let dot4 = document.createElement("div")
+    let dot5 = document.createElement("div")
+    let dot6 = document.createElement("div")
+    let dot7 = document.createElement("div")
+    let dot8 = document.createElement("div")
+    let dot9 = document.createElement("div")
+    switch (randomDominoNum) {
+      case 1:
+        dot1.setAttribute("class","dot white-dot")
+        dot2.setAttribute("class","dot white-dot")
+        dot3.setAttribute("class","dot white-dot")
+        dot4.setAttribute("class","dot white-dot")
+        dot5.setAttribute("class","dot")
+        dot6.setAttribute("class","dot white-dot")
+        dot7.setAttribute("class","dot white-dot")
+        dot8.setAttribute("class","dot white-dot")
+        dot9.setAttribute("class","dot white-dot")
+        break;
+      case 2:
+        dot1.setAttribute("class","dot")
+        dot2.setAttribute("class","dot white-dot")
+        dot3.setAttribute("class","dot white-dot")
+        dot4.setAttribute("class","dot white-dot")
+        dot5.setAttribute("class","dot white-dot")
+        dot6.setAttribute("class","dot white-dot")
+        dot7.setAttribute("class","dot white-dot")
+        dot8.setAttribute("class","dot white-dot")
+        dot9.setAttribute("class","dot")
+        break;
+      case 3:
+        dot1.setAttribute("class","dot")
+        dot2.setAttribute("class","dot white-dot")
+        dot3.setAttribute("class","dot white-dot")
+        dot4.setAttribute("class","dot white-dot")
+        dot5.setAttribute("class","dot")
+        dot6.setAttribute("class","dot white-dot")
+        dot7.setAttribute("class","dot white-dot")
+        dot8.setAttribute("class","dot white-dot")
+        dot9.setAttribute("class","dot")
+        break;
+      case 4:
+        dot1.setAttribute("class","dot")
+        dot2.setAttribute("class","dot white-dot")
+        dot3.setAttribute("class","dot")
+        dot4.setAttribute("class","dot white-dot")
+        dot5.setAttribute("class","dot white-dot")
+        dot6.setAttribute("class","dot white-dot")
+        dot7.setAttribute("class","dot")
+        dot8.setAttribute("class","dot white-dot")
+        dot9.setAttribute("class","dot")
+        break;
+      case 5:
+        dot1.setAttribute("class","dot")
+        dot2.setAttribute("class","dot white-dot")
+        dot3.setAttribute("class","dot")
+        dot4.setAttribute("class","dot white-dot")
+        dot5.setAttribute("class","dot")
+        dot6.setAttribute("class","dot white-dot")
+        dot7.setAttribute("class","dot")
+        dot8.setAttribute("class","dot white-dot")
+        dot9.setAttribute("class","dot")
+        break;
+      case 6:
+        dot1.setAttribute("class","dot")
+        dot2.setAttribute("class","dot")
+        dot3.setAttribute("class","dot")
+        dot4.setAttribute("class","dot white-dot")
+        dot5.setAttribute("class","dot white-dot")
+        dot6.setAttribute("class","dot white-dot")
+        dot7.setAttribute("class","dot")
+        dot8.setAttribute("class","dot")
+        dot9.setAttribute("class","dot")
+        break;
+      default:
+
+    }
+
+    randomDomino.appendChild(dot1)
+    randomDomino.appendChild(dot2)
+    randomDomino.appendChild(dot3)
+    randomDomino.appendChild(dot4)
+    randomDomino.appendChild(dot5)
+    randomDomino.appendChild(dot6)
+    randomDomino.appendChild(dot7)
+    randomDomino.appendChild(dot8)
+    randomDomino.appendChild(dot9)
+    return randomDomino
+
+
+  }
+
+
+    const generateDomino = () => {
+      let dominoContainer = document.getElementById("domino-container")
+      if (dominoContainer.children.length >= 2) {
+        dominoContainer.innerHTML = ""
+      }
+      dominoContainer.appendChild(randomDominoGenerator())
+      dominoContainer.appendChild(randomDominoGenerator())
+    }
+
+    let dominoButton = document.getElementById("make-domino")
+    dominoButton.addEventListener("click",generateDomino)
+    document.getElementById("flip-right").addEventListener("click",flipRight)
+    document.getElementById("flip-left").addEventListener("click",flipLeft)
+
+
+
+  </script>
+</html>
